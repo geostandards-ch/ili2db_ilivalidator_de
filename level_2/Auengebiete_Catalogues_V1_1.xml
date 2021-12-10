@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Version    | Who   | Modification
+=======================================================================================
+2019-11-05 | BAFU  | Italienischer Text korrigiert (TID="3003")
+
+File Auengebiete_Catalogues_V1_1.xml VERSION="2019-11-05" (https://models.geo.admin.ch/BAFU/)
+-->
+<TRANSFER xmlns="http://www.interlis.ch/INTERLIS2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <HEADERSECTION VERSION="2.3" SENDER="BAFU">
+    <MODELS>
+      <MODEL NAME="CoordSys" URI="http://www.interlis.ch/models" VERSION="2015-11-24"/>
+      <MODEL NAME="Units" URI="http://www.interlis.ch/models" VERSION="2012-02-20"/>
+      <MODEL NAME="LocalisationCH_V1" URI="http://www.geo.admin.ch" VERSION="2011-08-30"/>
+      <MODEL NAME="CatalogueObjects_V1" URI="http://www.geo.admin.ch" VERSION="2011-08-30"/>
+      <MODEL NAME="GeometryCHLV03_V1" URI="http://www.geo.admin.ch" VERSION="2017-12-04"/>
+      <MODEL NAME="GeometryCHLV95_V1" URI="http://www.geo.admin.ch" VERSION="2017-12-04"/>
+      <MODEL NAME="Auengebiete_Codelisten_V1_1" URI="https://models.geo.admin.ch/BAFU/" VERSION="2018-01-30"/>
+      <MODEL NAME="Auengebiete_LV03_V1_1" URI="https://models.geo.admin.ch/BAFU/" VERSION="2018-01-30"/>
+      <MODEL NAME="Auengebiete_LV95_V1_1" URI="https://models.geo.admin.ch/BAFU/" VERSION="2018-01-30"/>
+    </MODELS>
+  </HEADERSECTION>
+
+  <DATASECTION>
+
+    <Auengebiete_Codelisten_V1_1.Codelisten BID="ch.admin.bafu.auengebiete_catalogues_v1_1">
+
+      <Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue TID="3001">
+        <Code>1</Code>
+        <Description>
+          <LocalisationCH_V1.MultilingualText>
+            <LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>de</Language>
+                <Text>Gletschervorfeld</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>fr</Language>
+                <Text>Marge proglaciaire</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>it</Language>
+                <Text>Margine proglaciale</Text>
+              </LocalisationCH_V1.LocalisedText>
+            </LocalisedText>
+          </LocalisationCH_V1.MultilingualText>
+        </Description>
+      </Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue>
+      <Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue TID="3002">
+        <Code>2</Code>
+        <Description>
+          <LocalisationCH_V1.MultilingualText>
+            <LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>de</Language>
+                <Text>Alpine Schwemmebene</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>fr</Language>
+                <Text>Plaine alluviale alpine</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>it</Language>
+                <Text>Pianura alluvionale alpina </Text>
+              </LocalisationCH_V1.LocalisedText>
+            </LocalisedText>
+          </LocalisationCH_V1.MultilingualText>
+        </Description>
+      </Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue>
+      <Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue TID="3003">
+        <Code>3</Code>
+        <Description>
+          <LocalisationCH_V1.MultilingualText>
+            <LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>de</Language>
+                <Text>Fliessgewässer</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>fr</Language>
+                <Text>Cours d'eau</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>it</Language>
+                <Text>Corso d'acqua</Text>
+              </LocalisationCH_V1.LocalisedText>
+            </LocalisedText>
+          </LocalisationCH_V1.MultilingualText>
+        </Description>
+      </Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue>
+      <Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue TID="3004">
+        <Code>4</Code>
+        <Description>
+          <LocalisationCH_V1.MultilingualText>
+            <LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>de</Language>
+                <Text>Delta</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>fr</Language>
+                <Text>Delta</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>it</Language>
+                <Text>Delta</Text>
+              </LocalisationCH_V1.LocalisedText>
+            </LocalisedText>
+          </LocalisationCH_V1.MultilingualText>
+        </Description>
+      </Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue>
+      <Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue TID="3005">
+        <Code>5</Code>
+        <Description>
+          <LocalisationCH_V1.MultilingualText>
+            <LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>de</Language>
+                <Text>Seeufer</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>fr</Language>
+                <Text>Rive lacustre</Text>
+              </LocalisationCH_V1.LocalisedText>
+              <LocalisationCH_V1.LocalisedText>
+                <Language>it</Language>
+                <Text>Riva del Lago</Text>
+              </LocalisationCH_V1.LocalisedText>
+            </LocalisedText>
+          </LocalisationCH_V1.MultilingualText>
+        </Description>
+      </Auengebiete_Codelisten_V1_1.Codelisten.TYP_Catalogue>
+
+    </Auengebiete_Codelisten_V1_1.Codelisten>
+
+  </DATASECTION>
+</TRANSFER>

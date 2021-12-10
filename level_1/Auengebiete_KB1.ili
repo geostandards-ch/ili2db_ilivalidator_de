@@ -1,0 +1,61 @@
+INTERLIS 2.3;
+
+!!Dieses Modell wurde als Beispiel im Benutzerhandbuch für das Tool ili2db erstellt.
+!!Es basiert auf dem BAFU-Modell für Auengebiete.
+!!Namenskonvention: KB = ili2dbKochbuch / KB1 (oder KB2) definiert das Level 1 (oder Level 2)
+!!@ technicalContact=mailto:info@inser.ch
+
+MODEL Auengebiete_KB1
+AT "https://www.inser.ch"
+VERSION "2020-12-16"  =
+  IMPORTS GeometryCHLV95_V1;
+
+  TOPIC Auengebiete_KB =
+
+    DOMAIN
+
+  /* Aufzählungslisten */
+      DesignationType = (
+        SAC,
+        SPA,
+        SCI,
+        RAMSAR,
+        NDA
+      );
+
+      IUCNCategory = (
+        Strict_Nature_Reserve_Ia,
+        Wilderness_Area_Ib,
+        National_Park_II,
+        Natural_Monument_III,
+        Habitat_or_Species_Management_Area_IV,
+        Protected_Landscape_or_Seascape_V,
+        Managed_Resource_Protected_Area_VI
+      );
+
+  /* Flächen ohne Kreisbogen */
+    Polygon = SURFACE WITH (STRAIGHTS) VERTEX GeometryCHLV95_V1.Coord3 WITHOUT OVERLAPS > 0.001;
+
+    CLASS Auengebiet_Teilobjekt_KB1 =
+      Geo_Obj : MANDATORY Polygon;
+    END Auengebiet_Teilobjekt_KB1;
+
+    CLASS Auengebiet_KB1 =
+      ObjNummer : MANDATORY TEXT*30;
+      Name : MANDATORY TEXT*80;
+      RefObjBlatt : INTERLIS.URI;
+      DesignatType : DesignationType;
+      IUCNCategory : MANDATORY IUCNCategory;
+      Inkraftsetzungsdatum : MANDATORY INTERLIS.XMLDate;
+      Mutationsdatum : INTERLIS.XMLDate;
+    UNIQUE ObjNummer;
+    END Auengebiet_KB1;
+
+    ASSOCIATION Auengebiet_TeilobjektAuengebiet_KB1 =
+      Auengebiet_Teilobjekt -- {1..*} Auengebiet_Teilobjekt_KB1;
+      Auengebiet -<#> {1} Auengebiet_KB1;
+    END Auengebiet_TeilobjektAuengebiet_KB1;
+
+  END Auengebiete_KB;
+
+END Auengebiete_KB1.

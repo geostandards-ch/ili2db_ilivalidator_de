@@ -1,0 +1,97 @@
+INTERLIS 2.3;
+
+!!Dieses Modell wurde als Beispiel im Benutzerhandbuch für das Tool ili2db erstellt.
+!!Es basiert auf dem BAFU-Modell für Auengebiete.
+!!Namenskonvention: KB = ili2dbKochbuch / KB1 (oder KB2) definiert das Level 1 (oder Level 2)
+!!@ technicalContact=mailto:info@inser.ch
+
+MODEL Auengebiete_Codelisten_V1_1 (de)
+AT "https://models.geo.admin.ch/BAFU/"
+VERSION "2019-11-14"  =
+  IMPORTS LocalisationCH_V1,CatalogueObjects_V1;
+
+  TOPIC Codelisten =
+
+    CLASS TYP_Catalogue
+    EXTENDS CatalogueObjects_V1.Catalogues.Item =
+      Code : MANDATORY TEXT*15;
+      Description : MANDATORY LocalisationCH_V1.MultilingualText;
+    END TYP_Catalogue;
+
+    STRUCTURE TYP_CatRef
+    EXTENDS CatalogueObjects_V1.Catalogues.CatalogueReference =
+      Reference (EXTENDED) : MANDATORY REFERENCE TO (EXTERNAL) TYP_Catalogue;
+    END TYP_CatRef;
+
+  END Codelisten;
+
+ END Auengebiete_Codelisten_V1_1.
+
+MODEL Auengebiete_KB2
+AT "https://www.inser.ch"
+VERSION "2020-12-16"  =
+  IMPORTS GeometryCHLV95_V1,LocalisationCH_V1,Auengebiete_Codelisten_V1_1;
+
+  TOPIC Auengebiete_KB =
+  DEPENDS ON Auengebiete_Codelisten_V1_1.Codelisten;
+
+    DOMAIN
+
+  /* Aufzählungslisten */
+      DesignationType = (
+        SAC,
+        SPA,
+        SCI,
+        RAMSAR,
+        NDA
+      );
+
+      IUCNCategory = (
+        Strict_Nature_Reserve_Ia,
+        Wilderness_Area_Ib,
+        National_Park_II,
+        Natural_Monument_III,
+        Habitat_or_Species_Management_Area_IV,
+        Protected_Landscape_or_Seascape_V,
+        Managed_Resource_Protected_Area_VI
+      );
+
+  /* Flächen ohne Kreisbogen */
+    Polygon = SURFACE WITH (STRAIGHTS) VERTEX GeometryCHLV95_V1.Coord3 WITHOUT OVERLAPS > 0.001;
+
+  /* Definition der Struktur Plan */
+    STRUCTURE PlanStr =
+      Nummer : MANDATORY TEXT*12;
+      Ident : MANDATORY TEXT*12;
+    END PlanStr;
+
+    CLASS BasisObjekt (ABSTRACT) =
+	  ObjNummer : MANDATORY TEXT*30;
+      Name : MANDATORY TEXT*80;
+      RefObjBlatt : INTERLIS.URI;
+      DesignatType : DesignationType;
+	  Mutationsdatum : INTERLIS.XMLDate;
+      Mutationsgrund : LocalisationCH_V1.MultilingualText;
+	  Plan: PlanStr;
+    END BasisObjekt;
+
+    CLASS Auengebiet_Teilobjekt_KB2 =
+      Geo_Obj : MANDATORY GeometryCHLV95_V1.MultiSurface;
+    END Auengebiet_Teilobjekt_KB2;
+
+    CLASS Auengebiet_KB2
+	EXTENDS BasisObjekt =
+      IUCNCategory : MANDATORY IUCNCategory;
+      Typ : MANDATORY Auengebiete_Codelisten_V1_1.Codelisten.TYP_CatRef;
+      Inkraftsetzungsdatum : MANDATORY INTERLIS.XMLDate;
+    UNIQUE ObjNummer;
+    END Auengebiet_KB2;
+
+    ASSOCIATION Auengebiet_TeilobjektAuengebiet_KB2 =
+      Auengebiet_Teilobjekt -- {1..*} Auengebiet_Teilobjekt_KB2;
+      Auengebiet -<#> {1} Auengebiet_KB2;
+    END Auengebiet_TeilobjektAuengebiet_KB2;
+
+  END Auengebiete_KB;
+
+END Auengebiete_KB2.
